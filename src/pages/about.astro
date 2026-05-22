@@ -1,22 +1,60 @@
 ---
-
+const pageTitle = "Sobre Mim";
+const identify = {
+  firstName: "Sarah",
+  country: "Canadá",
+  occupation: "Escritora Técnica",
+  hobbies: ["fotografia", "observar pássaros", "beisebol"],
+};
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Escrever Documentação"];
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
-<html lang="Pt">
+<html lang="pt-BR">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
-        <a> inicio</a>
-        <a> vamos </a>
-		<h1> Quem sou Eu?</h1>
-        <h1> sobre mim</h1>
-        <h2> formação</h2>
-        <p>meu futuro na programação</p>
+		<nav>
+			<a href="/">Início</a>
+			<a href="/vamos">Vamos</a>
+		</nav>
+
+		<h1>Quem sou Eu?</h1>
+		<h1>{pageTitle}</h1>
+		<h2>Formação</h2>
+		<p>Meu futuro na programação</p>
+
+		<hr />
+
+		<h1>Meu Blog de Aprendizado sobre Astro</h1>
+		
+		<p>Aqui estão alguns fatos sobre mim:</p>
+		<ul>
+			<li>Meu nome é {identify.firstName}.</li>
+			<li>Eu moro no {identify.country} e eu trabalho como uma {identify.occupation}.</li>
+			{identify.hobbies.length >= 2 && (
+				<li>Dois dos meus hobbies são: {identify.hobbies[0]} e {identify.hobbies[1]}</li>
+			)}
+		</ul>
+
+		<p>Minhas habilidades são:</p>
+		<ul>
+			{skills.map((habilidade) => (
+				<li>{habilidade}</li>
+			))}
+		</ul>
+        {happy && <p>Estou feliz em estar aprendendo Astro!</p>}
+
+{finished && <p>Eu terminei esse tutorial!</p>}
+
+{goal === 3 ? <p>Minha meta é terminar em 3 dias.</p> : <p>Minha meta não é em 3 dias.</p>}
 	</body>
 </html>
